@@ -9,3 +9,24 @@ services:
     volumes:
       - ../discovery/config/consul-config.json:/discovery-service/config/config.json
       - ../discovery/data:/discovery-service/data
+
+  user-db:
+    image: postgres
+    container_name: user-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - 5401:5432
+    restart: always
+
+  user-service:
+    build: ../services/user
+    container_name: user-service
+    ports:
+      - 7001:7001
+    restart: always
+    depends_on:
+      - user-db
+      - discovery-service

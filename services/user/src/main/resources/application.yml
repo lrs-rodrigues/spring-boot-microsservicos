@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: user-service
+  profiles:
+    active: prod
+  cloud:
+    consul:
+      host: discovery-service
+      port: 8500
+      discovery:
+        instance-id: "${spring.application.name}:${random.value}"
+        healthCheckPath: /health-check
+        healthCheckInterval: 15s
+  jpa:
+    open-in-view: true
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+server:
+  port: 7001
