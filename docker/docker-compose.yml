@@ -1,0 +1,11 @@
+version: "3.2"
+
+services:
+  discovery-service:
+    build: ../discovery
+    ports:
+      - 8500:8500
+    command: agent -server -bind 0.0.0.0 -client 0.0.0.0 -bootstrap-expect 1 -config-file=/discovery-service/config/config.json
+    volumes:
+      - ../discovery/config/consul-config.json:/discovery-service/config/config.json
+      - ../discovery/data:/discovery-service/data
