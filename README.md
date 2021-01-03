@@ -2,17 +2,9 @@
 
 Esse é um **projeto** totalmente voltado para estudo, com o objetivo de estudar arquitetura de microserviços na pratica com o framework Spring Boot e Spring Cloud.
 
----
-
-</br>
-
 ### Desenho da arquitetura
 
-![arquitetura](https://github.com/[username]/[reponame]/blob/[branch]/midia/arquitetura.jpg?raw=true)
-
----
-
-</br>
+![arquitetura](https://github.com/lrs-rodrigues/microservicos-com-spring-boot/blob/main/midia/arquitetura.png?raw=true)
 
 ### Serviços implementados no projeto
 
@@ -23,10 +15,6 @@ Esse é um **projeto** totalmente voltado para estudo, com o objetivo de estudar
 - [ ] Order Queue
 - [ ] Payment Service/Queue
 - [ ] Order Service/Queue
-
----
-
-</br>
 
 ### Tecnologias utilizadas ⚡
 
