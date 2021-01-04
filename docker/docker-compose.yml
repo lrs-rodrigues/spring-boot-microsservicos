@@ -47,3 +47,31 @@ services:
     depends_on:
       - user-db
       - discovery-service
+
+  address-db:
+    image: postgres
+    container_name: address-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - 5402:5432
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.7
+    restart: always
+
+  address-service:
+    build: ../services/address
+    container_name: address-service
+    ports:
+      - 7002:7002
+    restart: always
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.8
+    depends_on:
+      - address-db
+      - discovery-service
+
