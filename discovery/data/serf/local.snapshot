@@ -1,2 +1,6 @@
 alive: 118e9ebe461d 192.168.16.3:8301
 event-clock: 1
+alive: bb94bc5f0e9a 192.168.16.2:8301
+event-clock: 2
+alive: 392b22705b49 10.5.0.5:8301
+event-clock: 3

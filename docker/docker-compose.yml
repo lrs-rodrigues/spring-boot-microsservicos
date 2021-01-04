@@ -1,5 +1,13 @@
 version: "3.2"
 
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
+
 services:
   discovery-service:
     build: ../discovery
@@ -9,6 +17,9 @@ services:
     volumes:
       - ../discovery/config/consul-config.json:/discovery-service/config/config.json
       - ../discovery/data:/discovery-service/data
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.5
 
   user-db:
     image: postgres
@@ -19,6 +30,9 @@ services:
       - POSTGRES_DB=postgres
     ports:
       - 5401:5432
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.6
     restart: always
 
   user-service:
@@ -27,6 +41,9 @@ services:
     ports:
       - 7001:7001
     restart: always
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.7
     depends_on:
       - user-db
       - discovery-service
