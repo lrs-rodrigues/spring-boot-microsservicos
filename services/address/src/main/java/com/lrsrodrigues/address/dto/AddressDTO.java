@@ -1,49 +1,33 @@
-package com.lrsrodrigues.address.entities;
+package com.lrsrodrigues.address.dto;
 
-import javax.persistence.*;
-import java.util.Objects;
+import javax.validation.constraints.NotBlank;
 
-@Entity
-@Table(name = "tb_address")
-public class Address {
+public class AddressDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
+    @NotBlank
     private String address;
+
+    @NotBlank
     private String street;
+
+    @NotBlank
     private String city;
+
+    @NotBlank
     private String state;
+
+    @NotBlank
     private String zipcode;
+
+    @NotBlank
     private String country;
 
+    @NotBlank
     private String ownerType;
+
+    @NotBlank
     private Integer ownerId;
-
-    public Address() {
-    }
-
-    public Address(Integer id, String address, String street, String city, String state,
-                   String zipcode, String country, String ownerType, Integer ownerId) {
-        this.id = id;
-        this.address = address;
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.zipcode = zipcode;
-        this.country = country;
-        this.ownerType = ownerType;
-        this.ownerId = ownerId;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getAddress() {
         return address;
@@ -107,18 +91,5 @@ public class Address {
 
     public void setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Address address = (Address) o;
-        return Objects.equals(id, address.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 }

@@ -2,8 +2,9 @@ version: "3.2"
 
 networks:
   vpcbr:
-    driver: bridge
+    driver: nat
     ipam:
+      driver: default
       config:
         - subnet: 10.5.0.0/16
           gateway: 10.5.0.1
@@ -59,7 +60,7 @@ services:
       - 5402:5432
     networks:
       vpcbr:
-        ipv4_address: 10.5.0.7
+        ipv4_address: 10.5.0.8
     restart: always
 
   address-service:
@@ -70,7 +71,7 @@ services:
     restart: always
     networks:
       vpcbr:
-        ipv4_address: 10.5.0.8
+        ipv4_address: 10.5.0.9
     depends_on:
       - address-db
       - discovery-service
