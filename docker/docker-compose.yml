@@ -6,7 +6,7 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 10.5.0.0/16
+        - subnet: 10.5.0.0/24
           gateway: 10.5.0.1
 
 services:
@@ -139,5 +139,45 @@ services:
         ipv4_address: 10.5.0.11
     depends_on:
       - catalog-db
+      - discovery-service
+
+  order-db:
+    image: postgres
+    container_name: order-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - 5405:5432
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.12
+    restart: always
+
+  checkout-service:
+    build: ../services/checkout
+    container_name: checkout-service
+    ports:
+      - 7004:7004
+    restart: always
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.13
+    depends_on:
+      - order-db
+      - discovery-service
+
+  order-service:
+    build: ../services/order
+    container_name: order-service
+    ports:
+      - 7005:7005
+    restart: always
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.14
+    depends_on:
+      - order-db
       - discovery-service
 

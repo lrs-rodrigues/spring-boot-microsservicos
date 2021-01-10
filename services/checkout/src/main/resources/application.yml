@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: checkout-service
+  profiles:
+    active: prod
+  cloud:
+    consul:
+      host: 10.5.0.5
+      port: 8500
+      discovery:
+        instance-id: "${spring.application.name}:${random.value}"
+        healthCheckPath: /health-check
+        healthCheckInterval: 15s
+  jpa:
+    open-in-view: true
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+server:
+  port: 7004
+
+kafka:
+  bootstrap:
+    servers: 10.5.0.3:9092
