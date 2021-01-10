@@ -15,13 +15,12 @@ public class AddressService {
     @Autowired
     private AddressRepository addressRepository;
 
-
-    public List<Address> findAll() {
-        return addressRepository.findAll();
-    }
-
     public Address findById(Integer id) {
         return addressRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+    }
+
+    public Address findByOwnerId(Integer ownerId) {
+        return addressRepository.findByOwnerId(ownerId);
     }
 
     public Address insert(AddressDTO address) {

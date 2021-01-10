@@ -12,21 +12,21 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/v1/users/address")
+@RequestMapping(value = "/v1/address")
 public class AddressResource {
 
     @Autowired
     private AddressService addressService;
 
-    @GetMapping
-    public ResponseEntity<List<Address>> findAll() {
-        List<Address> addresses = addressService.findAll();
-        return ResponseEntity.ok().body(addresses);
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Address> findById(@RequestParam(value = "id", required = true) Integer id) {
+        Address address = addressService.findById(id);
+        return ResponseEntity.ok().body(address);
     }
 
-    @GetMapping(value = "/{address.id}")
-    public ResponseEntity<Address> findById(@RequestParam("address.id") Integer id) {
-        Address address = addressService.findById(id);
+    @GetMapping(value = "/owner/{id}")
+    public ResponseEntity<Address> findByOwnerId(@RequestParam(value = "id", required = true) Integer id) {
+        Address address = addressService.findByOwnerId(id);
         return ResponseEntity.ok().body(address);
     }
 
