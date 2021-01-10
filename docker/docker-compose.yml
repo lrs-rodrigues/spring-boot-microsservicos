@@ -2,7 +2,7 @@ version: "3.2"
 
 networks:
   vpcbr:
-    driver: nat
+    driver: bridge
     ipam:
       driver: default
       config:
