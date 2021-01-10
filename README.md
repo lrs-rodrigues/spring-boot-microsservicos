@@ -9,19 +9,19 @@ Esse é um **projeto** totalmente voltado para estudo, com o objetivo de estudar
 ### Serviços implementados no projeto
 
 - [x] User Service
-- [ ] Address Service
-- [ ] Product Service
-- [ ] Order Service
-- [ ] Order Queue
-- [ ] Payment Service/Queue
+- [X] Address Service
+- [X] Catalog Service
 - [ ] Order Service/Queue
+- [ ] Payment Service/Queue
+- [ ] Tracking Service/Queue
+- [ ] Checkout Service
 
 ### Tecnologias utilizadas ⚡
 
 - [x] Spring Boot
 - [x] Postgres
 - [x] Docker e Docker-Compose
-- [ ] Kafka
+- [X] Kafka
 - [x] Consul
 - [ ] Zuul
 - [ ] Prometheus e Grafana
