@@ -76,3 +76,30 @@ services:
       - address-db
       - discovery-service
 
+  catalog-db:
+    image: postgres
+    container_name: catalog-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - 5403:5432
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.10
+    restart: always
+
+  catalog-service:
+    build: ../services/catalog
+    container_name: catalog-service
+    ports:
+      - 7003:7003
+    restart: always
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.11
+    depends_on:
+      - catalog-db
+      - discovery-service
+
