@@ -26,7 +26,7 @@ public class Order {
     private Integer userId;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OneToMany(mappedBy = "orderBase", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItem = new ArrayList<>();
 
     public Order() { }
