@@ -1,15 +1,15 @@
-package com.lrsrodrigues.order.dto;
+package com.lrsrodrigues.checkout.dto;
 
 import java.util.List;
 
 public class KartDTO {
 
     private Integer orderId;
-    private List<OrderItemDTO> orderItemList;
+    private List<KartItemDTO> kartItems;
 
-    public KartDTO(Integer orderId, List<OrderItemDTO> orderItemList) {
+    public KartDTO(Integer orderId, List<KartItemDTO> kartItems) {
         this.orderId = orderId;
-        this.orderItemList = orderItemList;
+        this.kartItems = kartItems;
     }
 
     public Integer getOrderId() {
@@ -20,11 +20,11 @@ public class KartDTO {
         this.orderId = orderId;
     }
 
-    public List<OrderItemDTO> getOrderItemList() {
-        return orderItemList;
+    public List<KartItemDTO> getKartItems() {
+        return kartItems;
     }
 
-    public void setOrderItemList(List<OrderItemDTO> orderItemList) {
-        this.orderItemList = orderItemList;
+    public void setKartItems(List<KartItemDTO> kartItems) {
+        this.kartItems = kartItems;
     }
 }

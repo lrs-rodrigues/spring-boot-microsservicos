@@ -1,12 +1,12 @@
 package com.lrsrodrigues.checkout.dto;
 
-public class OrderItemDTO {
+public class KartItemDTO {
 
     private Integer quantity;
     private Double price;
     private Integer productId;
 
-    public OrderItemDTO(Integer quantity, Double price, Integer productId) {
+    public KartItemDTO(Integer quantity, Double price, Integer productId) {
         this.quantity = quantity;
         this.price = price;
         this.productId = productId;

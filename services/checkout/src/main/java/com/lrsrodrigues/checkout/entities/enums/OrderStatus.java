@@ -1,4 +1,4 @@
-package com.lrsrodrigues.order.entities.enums;
+package com.lrsrodrigues.checkout.entities.enums;
 
 public enum OrderStatus {
 
