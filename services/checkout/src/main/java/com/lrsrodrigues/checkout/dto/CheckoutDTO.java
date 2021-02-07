@@ -1,15 +1,16 @@
 package com.lrsrodrigues.checkout.dto;
 
-import java.util.Date;
+import com.lrsrodrigues.checkout.entities.KartItem;
+
 import java.util.List;
 
 public class CheckoutDTO {
 
     private Integer orderStatus;
     private Integer userId;
-    private List<KartItemDTO> kartItems;
+    private List<KartItem> kartItems;
 
-    public CheckoutDTO(Integer orderStatus, Integer userId, List<KartItemDTO> kartItems) {
+    public CheckoutDTO(Integer orderStatus, Integer userId, List<KartItem> kartItems) {
         this.orderStatus = orderStatus;
         this.userId = userId;
         this.kartItems = kartItems;
@@ -31,11 +32,11 @@ public class CheckoutDTO {
         this.userId = userId;
     }
 
-    public List<KartItemDTO> getKartItems() {
+    public List<KartItem> getKartItems() {
         return kartItems;
     }
 
-    public void setKartItems(List<KartItemDTO> kartItems) {
+    public void setKartItems(List<KartItem> kartItems) {
         this.kartItems = kartItems;
     }
 }

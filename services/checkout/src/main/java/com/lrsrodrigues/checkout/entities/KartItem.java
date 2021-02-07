@@ -1,12 +1,12 @@
-package com.lrsrodrigues.checkout.dto;
+package com.lrsrodrigues.checkout.entities;
 
-public class KartItemDTO {
+public class KartItem {
 
     private Integer quantity;
     private Double price;
     private Integer productId;
 
-    public KartItemDTO(Integer quantity, Double price, Integer productId) {
+    public KartItem(Integer quantity, Double price, Integer productId) {
         this.quantity = quantity;
         this.price = price;
         this.productId = productId;
@@ -34,5 +34,9 @@ public class KartItemDTO {
 
     public void setProductId(Integer productId) {
         this.productId = productId;
+    }
+
+    public String toString() {
+        return "KartItem [quantity=" + quantity + ", price=" +  price + ", productId=" + productId + "]";
     }
 }

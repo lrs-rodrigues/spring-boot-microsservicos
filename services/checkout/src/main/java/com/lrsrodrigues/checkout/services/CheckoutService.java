@@ -1,7 +1,7 @@
 package com.lrsrodrigues.checkout.services;
 
 import com.lrsrodrigues.checkout.dto.CheckoutDTO;
-import com.lrsrodrigues.checkout.dto.KartDTO;
+import com.lrsrodrigues.checkout.entities.KartItem;
 import com.lrsrodrigues.checkout.entities.Order;
 import com.lrsrodrigues.checkout.producer.OrderProducer;
 import com.lrsrodrigues.checkout.repositories.OrderRepository;
@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class CheckoutService {
@@ -24,9 +25,7 @@ public class CheckoutService {
 
         order = orderRepository.save(order);
 
-        KartDTO kartDTO = new KartDTO(order.getId(), data.getKartItems());
-
-        orderProducer.send(kartDTO);
+        orderProducer.send(order.getId(), data.getKartItems());
 
         return order;
     }
