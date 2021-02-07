@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.ExecutionException;
+
 @RestController
 @RequestMapping(value = "/v1/checkout")
 public class CheckoutResource {
@@ -18,7 +20,7 @@ public class CheckoutResource {
     private CheckoutService checkoutService;
 
     @PostMapping
-    public ResponseEntity<Order> insert(@RequestBody CheckoutDTO checkoutDTO) {
+    public ResponseEntity<Order> insert(@RequestBody CheckoutDTO checkoutDTO) throws ExecutionException, InterruptedException {
         Order order = checkoutService.insert(checkoutDTO);
         return ResponseEntity.ok().body(order);
     }

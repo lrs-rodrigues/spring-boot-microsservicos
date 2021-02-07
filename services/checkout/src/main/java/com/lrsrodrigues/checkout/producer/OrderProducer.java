@@ -7,6 +7,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @Service
 public class OrderProducer {
@@ -14,7 +15,7 @@ public class OrderProducer {
     @Autowired
     private KafkaTemplate<String, Kart> kafkaTemplate;
 
-    public void send(Integer orderId, List<KartItem> kartItems) {
-        kafkaTemplate.send("order", new Kart(orderId, kartItems));
+    public void send(Integer orderId, List<KartItem> kartItems) throws ExecutionException, InterruptedException {
+        kafkaTemplate.send("order", new Kart(orderId, kartItems)).get();
     }
 }

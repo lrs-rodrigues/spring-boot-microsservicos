@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @Service
 public class CheckoutService {
@@ -20,7 +21,7 @@ public class CheckoutService {
     @Autowired
     private OrderProducer orderProducer;
 
-    public Order insert(CheckoutDTO data) {
+    public Order insert(CheckoutDTO data) throws ExecutionException, InterruptedException {
         Order order = new Order(null, new Date(), 1, data.getUserId());
 
         order = orderRepository.save(order);
