@@ -14,7 +14,7 @@ Esse é um **projeto** totalmente voltado para estudo, com o objetivo de estudar
 - [X] Order Service/Queue
 - [ ] Payment Service/Queue
 - [ ] Tracking Service/Queue
-- [ ] Checkout Service
+- [X] Checkout Service
 - [ ] Mail Service
 
 ### Tecnologias utilizadas ⚡
