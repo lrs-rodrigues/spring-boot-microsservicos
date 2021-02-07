@@ -16,12 +16,15 @@ spring:
   jackson:
     serialization:
       fail-on-empty-beans: false
+  kafka:
+    bootstrap-servers: 10.5.0.3:9092
+    listener:
+      ack-mode: manual
+    consumer:
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.StringSerializer
 
 server:
   port: 7005
-
-kafka:
-  bootstrap:
-    servers: 10.5.0.3:9092
-  topic:
-    order: order.t

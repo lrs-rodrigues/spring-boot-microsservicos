@@ -21,15 +21,11 @@ public class OrderService {
     private OrderItemRepository orderItemRepository;
 
     public List<Order> findAll() {
-        List<Order> orders = orderRepository.findAll();
-
-        return orders;
+        return orderRepository.findAll();
     }
 
     public Order findById(Integer id) {
-        Order order = orderRepository.findById(id)
+        return orderRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(id));
-
-        return order;
     }
 }

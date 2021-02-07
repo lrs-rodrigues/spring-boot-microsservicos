@@ -1,11 +1,18 @@
-package com.lrsrodrigues.checkout.entities;
+package com.lrsrodrigues.order.entities;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
 public class Kart {
 
+    @JsonProperty("orderId")
     private Integer orderId;
+
+    @JsonProperty("kartItems")
     private List<KartItem> kartItems;
+
+    public Kart() {}
 
     public Kart(Integer orderId, List<KartItem> kartItems) {
         this.orderId = orderId;

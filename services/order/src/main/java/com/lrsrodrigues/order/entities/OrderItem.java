@@ -18,9 +18,9 @@ public class OrderItem {
 
     private Integer productId;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "tb_order_id")
+    @JsonIgnore
     private Order order;
 
     public OrderItem() {}
@@ -65,7 +65,7 @@ public class OrderItem {
         this.productId = productId;
     }
 
-    public Order getOrderBase() {
+    public Order getOrder() {
         return order;
     }
 

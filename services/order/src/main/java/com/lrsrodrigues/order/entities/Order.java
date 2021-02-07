@@ -2,6 +2,7 @@ package com.lrsrodrigues.order.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.lrsrodrigues.order.entities.enums.OrderStatus;
 
 import javax.persistence.*;
