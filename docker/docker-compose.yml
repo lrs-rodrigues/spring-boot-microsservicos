@@ -154,20 +154,6 @@ services:
         ipv4_address: 10.5.0.12
     restart: always
 
-  checkout-service:
-    build: ../services/checkout
-    container_name: checkout-service
-    ports:
-      - 7004:7004
-    restart: always
-    networks:
-      vpcbr:
-        ipv4_address: 10.5.0.13
-    depends_on:
-      - order-db
-      - discovery-service
-      - kafka
-
   order-service:
     build: ../services/order
     container_name: order-service
@@ -181,4 +167,20 @@ services:
       - order-db
       - discovery-service
       - kafka
+
+  checkout-service:
+    build: ../services/checkout
+    container_name: checkout-service
+    ports:
+      - 7004:7004
+    restart: always
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.13
+    depends_on:
+      - discovery-service
+      - order-db
+      - order-service
+      - kafka
+
 
