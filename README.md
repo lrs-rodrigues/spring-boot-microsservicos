@@ -11,10 +11,11 @@ Esse é um **projeto** totalmente voltado para estudo, com o objetivo de estudar
 - [x] User Service
 - [X] Address Service
 - [X] Catalog Service
-- [ ] Order Service/Queue
+- [X] Order Service/Queue
 - [ ] Payment Service/Queue
 - [ ] Tracking Service/Queue
 - [ ] Checkout Service
+- [ ] Mail Service
 
 ### Tecnologias utilizadas ⚡
 
@@ -24,4 +25,3 @@ Esse é um **projeto** totalmente voltado para estudo, com o objetivo de estudar
 - [X] Kafka
 - [x] Consul
 - [ ] Zuul
-- [ ] Prometheus e Grafana
