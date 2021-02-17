@@ -2,10 +2,6 @@
 
 Esse é um **projeto** totalmente voltado para estudo, com o objetivo de estudar arquitetura de microserviços na pratica com o framework Spring Boot e Spring Cloud.
 
-### Desenho da arquitetura
-
-![arquitetura](https://github.com/lrs-rodrigues/microservicos-com-spring-boot/blob/main/midia/arquitetura.png?raw=true)
-
 ### Serviços implementados no projeto
 
 - [x] User Service
