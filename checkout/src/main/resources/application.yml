@@ -1,8 +1,6 @@
 spring:
   application:
     name: checkout-service
-  profiles:
-    active: prod
   cloud:
     consul:
       host: 10.5.0.5

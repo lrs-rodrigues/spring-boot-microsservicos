@@ -1,33 +1,27 @@
 package com.lrsrodrigues.checkout.services;
 
 import com.lrsrodrigues.checkout.dto.CheckoutDTO;
-import com.lrsrodrigues.checkout.entities.KartItem;
-import com.lrsrodrigues.checkout.entities.Order;
+import com.lrsrodrigues.checkout.entities.Checkout;
 import com.lrsrodrigues.checkout.producer.OrderProducer;
-import com.lrsrodrigues.checkout.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 @Service
 public class CheckoutService {
 
-    @Autowired
-    private OrderRepository orderRepository;
 
     @Autowired
     private OrderProducer orderProducer;
 
-    public Order insert(CheckoutDTO data) throws ExecutionException, InterruptedException {
-        Order order = new Order(null, new Date(), 1, data.getUserId());
+    public Checkout insert(CheckoutDTO data) throws ExecutionException, InterruptedException {
+        UUID uuid = UUID.randomUUID();
+        Checkout checkout = new Checkout(uuid);
 
-        order = orderRepository.save(order);
+        orderProducer.send(uuid, data.getUserId(), data.getKartItems());
 
-        orderProducer.send(order.getId(), data.getKartItems());
-
-        return order;
+        return checkout;
     }
 }
