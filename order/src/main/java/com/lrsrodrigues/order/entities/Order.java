@@ -6,10 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.lrsrodrigues.order.entities.enums.OrderStatus;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_order")
@@ -26,17 +23,20 @@ public class Order {
 
     private Integer userId;
 
+    private UUID uuid;
+
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItem = new ArrayList<>();
 
     public Order() { }
 
-    public Order(Integer id, Date moment, Integer orderStatus, Integer userId) {
+    public Order(Integer id, Date moment, Integer orderStatus, Integer userId, UUID uuid) {
         this.id = id;
         this.moment = moment;
         this.orderStatus = orderStatus;
         this.userId = userId;
+        this.uuid = uuid;
     }
 
     public Integer getId() {
@@ -79,6 +79,14 @@ public class Order {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     @Override

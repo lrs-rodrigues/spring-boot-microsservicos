@@ -7,6 +7,7 @@ import com.lrsrodrigues.order.entities.OrderItem;
 import com.lrsrodrigues.order.repositories.OrderItemRepository;
 import com.lrsrodrigues.order.repositories.OrderRepository;
 import com.lrsrodrigues.order.services.exceptions.ResourceNotFoundException;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
@@ -16,7 +17,9 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class OrderConsumer {
@@ -35,8 +38,11 @@ public class OrderConsumer {
             @Header(KafkaHeaders.RECEIVED_TIMESTAMP) long ts,
             Acknowledgment acknowledgment
     ) {
-        Integer orderId = kart.getOrderId();
-        Order order = orderRepository.findById(orderId).orElseThrow(() -> new ResourceNotFoundException(orderId));
+        UUID uuid = kart.getUuid();
+
+        Order order = new Order(null, new Date(), 1, kart.getUserId(), uuid);
+
+        orderRepository.save(order);
 
         List<OrderItem> orderItems = new ArrayList<>();
 

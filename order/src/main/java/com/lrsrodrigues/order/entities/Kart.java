@@ -3,30 +3,42 @@ package com.lrsrodrigues.order.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
+import java.util.UUID;
 
 public class Kart {
 
-    @JsonProperty("orderId")
-    private Integer orderId;
+    @JsonProperty("uuid")
+    private UUID uuid;
+
+    @JsonProperty("userId")
+    private Integer userId;
 
     @JsonProperty("kartItems")
     private List<KartItem> kartItems;
 
     public Kart() {}
 
-    public Kart(Integer orderId, List<KartItem> kartItems) {
-        this.orderId = orderId;
+    public Kart(UUID uuid, Integer userId, List<KartItem> kartItems) {
+        this.uuid = uuid;
+        this.userId = userId;
         this.kartItems = kartItems;
     }
 
-    public Integer getOrderId() {
-        return orderId;
+    public UUID getUuid() {
+        return uuid;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
     public List<KartItem> getKartItems() {
         return kartItems;
     }
@@ -36,6 +48,6 @@ public class Kart {
     }
 
     public String toString() {
-        return "Kart [orderId=" + orderId + ", kartItems=" +  kartItems + "]";
+        return "Kart [uuid=" + uuid + ", userId=" + userId + ", kartItems=" +  kartItems + "]";
     }
 }
