@@ -8,9 +8,13 @@ public class CheckoutDTO {
 
     private Integer orderStatus;
     private Integer userId;
+
+    private Integer paymentType;
+
     private List<KartItem> kartItems;
 
-    public CheckoutDTO(Integer orderStatus, Integer userId, List<KartItem> kartItems) {
+    public CheckoutDTO(Integer orderStatus, Integer userId, Integer paymentType, List<KartItem> kartItems) {
+        this.paymentType = paymentType;
         this.orderStatus = orderStatus;
         this.userId = userId;
         this.kartItems = kartItems;
@@ -22,6 +26,14 @@ public class CheckoutDTO {
 
     public void setOrderStatus(Integer orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public Integer getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(Integer paymentType) {
+        this.paymentType = paymentType;
     }
 
     public Integer getUserId() {

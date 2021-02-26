@@ -1,23 +1,18 @@
 package com.lrsrodrigues.checkout.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.UUID;
 
-public class PaymentPayload {
+public class Payment {
 
-    @JsonProperty("price")
     private Double price;
 
-    @JsonProperty("uuid")
     private UUID uuid;
 
-    @JsonProperty("paymentType")
     private Integer paymentType;
 
-    public PaymentPayload() {}
+    public Payment() {}
 
-    public PaymentPayload(Double price, UUID uuid, Integer paymentType) {
+    public Payment(Double price, UUID uuid, Integer paymentType) {
         this.price = price;
         this.uuid = uuid;
         this.paymentType = paymentType;
@@ -48,6 +43,6 @@ public class PaymentPayload {
     }
 
     public String toString() {
-        return "PaymentPayload [uuid=" + uuid + ", price=" + price + ", paymentType=" +  paymentType + "]";
+        return "Payment [uuid=" + uuid + ", price=" + price + ", paymentType=" +  paymentType + "]";
     }
 }
