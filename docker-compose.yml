@@ -114,6 +114,19 @@ services:
       - catalog-db
       - discovery-service
 
+  checkout-service:
+    build: checkout
+    container_name: checkout-service
+    ports:
+      - 7004:7004
+    restart: always
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.13
+    depends_on:
+      - discovery-service
+      - kafka
+
   order-db:
     image: postgres
     container_name: order-db
@@ -142,19 +155,61 @@ services:
       - discovery-service
       - kafka
 
-  checkout-service:
-    build: checkout
-    container_name: checkout-service
+  payment-db:
+    image: postgres
+    container_name: payment-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
     ports:
-      - 7004:7004
+      - 5406:5432
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.15
+    restart: always
+
+  payment-service:
+    build: payment
+    container_name: payment-service
+    ports:
+      - 7006:7006
     restart: always
     networks:
       vpcbr:
-        ipv4_address: 10.5.0.13
+        ipv4_address: 10.5.0.16
     depends_on:
+      - payment-db
       - discovery-service
-      - order-db
-      - order-service
       - kafka
+
+  tracking-db:
+    image: postgres
+    container_name: tracking-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - 5407:5432
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.17
+    restart: always
+
+  tracking-service:
+    build: tracking
+    container_name: tracking-service
+    ports:
+      - 7007:7007
+    restart: always
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.18
+    depends_on:
+      - tracking-db
+      - discovery-service
+      - kafka
+
 
 
