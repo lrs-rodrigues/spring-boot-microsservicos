@@ -1,26 +1,17 @@
-package com.lrsrodrigues.tracking.payload;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+package com.lrsrodrigues.checkout.entities;
 
 import java.util.UUID;
 
-public class TrackingPayload {
+public class Tracking {
 
-    @JsonProperty("addressId")
     private Integer addressId;
-
-    @JsonProperty("uuid")
     private UUID uuid;
-
-    @JsonProperty("deliveryCompany")
     private String deliveryCompany;
-
-    @JsonProperty("deliveryPrice")
     private Double deliveryPrice;
 
-    public TrackingPayload() {}
+    public Tracking() {}
 
-    public TrackingPayload(Integer addressId, UUID uuid, String deliveryCompany, Double deliveryPrice) {
+    public Tracking(Integer addressId, UUID uuid, String deliveryCompany, Double deliveryPrice) {
         this.addressId = addressId;
         this.uuid = uuid;
         this.deliveryCompany = deliveryCompany;

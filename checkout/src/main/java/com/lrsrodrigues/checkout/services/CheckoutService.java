@@ -5,6 +5,7 @@ import com.lrsrodrigues.checkout.entities.Checkout;
 import com.lrsrodrigues.checkout.entities.KartItem;
 import com.lrsrodrigues.checkout.producer.OrderProducer;
 import com.lrsrodrigues.checkout.producer.PaymentProducer;
+import com.lrsrodrigues.checkout.producer.TrackingProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,9 @@ public class CheckoutService {
     @Autowired
     private PaymentProducer paymentProducer;
 
+    @Autowired
+    private TrackingProducer trackingProducer;
+
     public Checkout insert(CheckoutDTO data) throws ExecutionException, InterruptedException {
         UUID uuid = UUID.randomUUID();
         Checkout checkout = new Checkout(uuid);
@@ -31,6 +35,8 @@ public class CheckoutService {
                 .reduce(0.0, Double::sum);
 
         paymentProducer.send(totalPrice, uuid, data.getPaymentType());
+
+        trackingProducer.send(data.getAddressId(), uuid, data.getDeliveryCompany(), data.getDeliveryPrice());
 
         return checkout;
     }
