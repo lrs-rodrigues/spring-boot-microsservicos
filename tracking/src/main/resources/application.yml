@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: payment-service
+  profiles:
+    active: prod
+  cloud:
+    consul:
+      host: 10.5.0.5
+      port: 8500
+      discovery:
+        instance-id: "${spring.application.name}:${random.value}"
+        healthCheckPath: /health-check
+        healthCheckInterval: 15s
+  jpa:
+    open-in-view: true
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  kafka:
+    bootstrap-servers: 10.5.0.3:9092
+    listener:
+      ack-mode: manual
+    consumer:
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.StringSerializer
+
+server:
+  port: 7007
