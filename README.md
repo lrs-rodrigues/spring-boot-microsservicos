@@ -8,8 +8,8 @@ Este é um projeto totalmente voltado para estudo, com o objetivo de estudar arq
 - [X] Catalog Service
 - [X] Checkout Service
 - [X] Order Service/Queue
-- [ ] Payment Service/Queue
-- [ ] Tracking Service/Queue
+- [X] Payment Service/Queue
+- [X] Tracking Service/Queue
 
 ### Tecnologias utilizadas ⚡
 
@@ -18,5 +18,4 @@ Este é um projeto totalmente voltado para estudo, com o objetivo de estudar arq
 - [x] Docker e Docker-Compose
 - [X] Kafka
 - [x] Consul
-- [ ] Vault
 - [ ] Spring Cloud Gateway
